@@ -8,6 +8,8 @@ public class AudioManager : MonoSingleton<AudioManager>
 
     [SerializeField] private AudioClip _perfectStack, _imperfectStack;
 
+    private readonly int _pitchCounter = 15;
+
 
     private void Awake()
     {
@@ -18,7 +20,7 @@ public class AudioManager : MonoSingleton<AudioManager>
     {
         if (combo >= 1)
         {
-            _audioSource.pitch = Mathf.Lerp(0.8f, 2f, (float)combo / 15);
+            _audioSource.pitch = Mathf.Lerp(0.8f, 2f, (float)combo / _pitchCounter);
             _audioSource.PlayOneShot(_perfectStack);
         }
         else
